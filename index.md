@@ -1,6 +1,6 @@
 # EVMAuth
 
-> An open protocol to enable secure authorization in a simple, standard way for applications, APIs, and AI agents.
+_An open protocol to enable secure authorization in a simple, standard way for applications, APIs, and AI agents._
 
 ## Overview
 
@@ -11,6 +11,11 @@
 - **Built-In Security:** Replace permanent API keys with time-limited access tokens that naturally expire, dramatically reducing your attack surface without complex key rotation policies
 - **Seamless Monetization:** For paid APIs, access purchases happen directly through the contract with instant settlement—no payment processors, invoicing, or collection issues
 - **Flexible Access Control:** Offer different permission levels, durations, and price points with a tiered access control system that gives you precise control over API consumption
+
+## Repositories
+
+- [evmauth-core](https://github.com/evmauth/evmauth-core): Solidity EVMAuth contract.
+- [evmauth-ts](https://github.com/evmauth/evmauth-ts): TypeScript SDK for interacting with EVMAuth contracts.
 
 ## Core Architecture
 
@@ -124,10 +129,6 @@ The contract implements several security measures:
 
 The **EVMAuth** contract, SDKs, and libraries are released under the open source MIT License.
 
-## Repositories
-
-- [evmauth-core](https://github.com/evmauth/evmauth-core): Solidity EVMAuth contract.
-- [evmauth-ts](https://github.com/evmauth/evmauth-ts): TypeScript SDK for interacting with EVMAuth contracts.
 
 [ERC-1155]: https://eips.ethereum.org/EIPS/eip-1155
 [ERC-2470]: https://eips.ethereum.org/EIPS/eip-2470
