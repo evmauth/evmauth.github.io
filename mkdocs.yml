@@ -1,0 +1,37 @@
+site_name: EVMAuth
+site_description: An open protocol to enable secure authorization in a simple, standard way for applications, APIs, and AI agents
+repo_url: https://github.com/evmauth/evmauth-core
+theme:
+  name: material
+  icon:
+    logo: material/shield-key
+  palette:
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.indexes
+    - content.code.copy
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+  - Home: index.md
+
+plugins:
+  - search
+  - mermaid2
