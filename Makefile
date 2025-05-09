@@ -6,17 +6,22 @@
 
 # Install dependencies in development mode
 install: .venv
-	source .venv/bin/activate && uv pip install -e ".[docs]"
+	uv pip install -e ".[docs]"
 
 # Build the documentation
-docs: install
-	source .venv/bin/activate && mkdocs build
+build: install
+	uv run mkdocs build
 
 # Serve the documentation locally
-docs-serve: install
-	source .venv/bin/activate && mkdocs serve
+serve: install
+	uv run mkdocs serve
+
+# Deploy docs to Github
+deploy: install
+	uv run mkdocs gh-deploy
 
 # Clean build artifacts
 clean:
 	rm -rf site/
 	rm -rf .venv/
+
