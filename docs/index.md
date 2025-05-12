@@ -21,16 +21,35 @@ _An open protocol to enable secure authorization in a simple, standard way for a
 
 The **EVMAuth** contract is built with a modular architecture, extending several specialized contracts to provide a comprehensive feature set. The contract follows a hierarchical inheritance pattern:
 
-```
-EVMAuthAccessControl.sol
-       ↑
-EVMAuthBaseERC1155.sol
-       ↑
-EVMAuthPurchasableERC1155.sol
-       ↑
-EVMAuthExpiringERC1155.sol
-       ↑
-EVMAuth.sol
+```mermaid
+graph TD
+%% Custom styling with colors
+    classDef openZeppelin fill:#9cf, stroke:#333, stroke-width:2px, color:black
+    classDef accessControl fill:#c9f, stroke:#333, stroke-width:2px, color:black
+    classDef base fill:#fc9, stroke:#333, stroke-width:2px, color:black
+    classDef evmAuth fill:#f96, stroke:#333, stroke-width:2px, color:black
+
+    A[EVMAuth]:::evmAuth
+    B[EVMAuthExpiringERC1155]:::base
+    C[EVMAuthPurchasableERC1155]:::base
+    D[EVMAuthBaseERC1155]:::base
+    D2[OpenZeppelin ERC1155]:::openZeppelin
+    E[EVMAuthAccessControl]:::accessControl
+    E2[OpenZeppelin AccessControlDefaultAdminRules]:::openZeppelin
+    E3[OpenZeppelin AccessControl]:::openZeppelin
+
+%% Relationships with styled edges
+    E3 --> E2
+    E2 --> E
+    D2 --> D
+    E --> D
+    D --> C
+    C --> B
+    B --> A
+
+%% Add a title
+    subgraph "EVMAuth Contract Inheritance Hierarchy"
+    end
 ```
 
 ### EVMAuthAccessControl
@@ -39,7 +58,7 @@ This base layer extends OpenZeppelin's `AccessControlDefaultAdminRules` to add:
 
 - Role-based access control
 - Account blacklisting functionality
-- Methods to grant and revoke multiple roles
+- Methods to grant and revoke multiple roles in a single transaction
 
 ### EVMAuthBaseERC1155
 
@@ -82,9 +101,9 @@ The final implementation brings everything together with:
 
 2. **Expiration Mechanics**: Tokens can have fixed durations, enabling subscription-like models
 
-3. **Direct Purchase**: Users can buy access tokens directly from the contract if they have a price
+3. **Direct Purchase**: Users can buy access tokens directly from the contract (if a token is active and has a price set)
 
-4. **Cross-Chain Consistency**: Uses [ERC-2470] Singleton Factory for predictable addresses across EVMs
+4. **Cross-Chain Consistency**: Deployed using [ERC-2470] Singleton Factory for predictable addresses across EVMs
 
 5. **Blacklisting**: Ability to block malicious accounts from interacting with the system
 
